@@ -34,7 +34,7 @@ services:
         container_name: server-mysql
         restart: unless-stopped
         ports:
-            - "5434:5432"
+            - "3307:3306"
         networks:
             - server-network
         environment:

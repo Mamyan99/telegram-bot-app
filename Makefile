@@ -19,5 +19,7 @@ migrate:
 	docker exec -t  server-php php artisan migrate
 db-seed:
 	docker exec -t  server-php  php artisan db:seed
+set-webhook-url:
+	docker exec -t  server-php  php artisan set-telegram-bot-webhook-url
 
 
