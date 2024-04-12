@@ -2,7 +2,7 @@
 
 namespace App\Repositories\TelegramMessage;
 
-use App\Models\TelegramMessages;
+use App\Models\TelegramMessage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -10,10 +10,10 @@ class TelegramMessageRepository implements TelegramMessageRepositoryInterface
 {
     private function query(): Builder
     {
-        return TelegramMessages::query();
+        return TelegramMessage::query();
     }
 
-    public function save(TelegramMessages $messages): bool
+    public function save(TelegramMessage $messages): bool
     {
         $messages->save();
 
@@ -28,7 +28,7 @@ class TelegramMessageRepository implements TelegramMessageRepositoryInterface
             ->get();
     }
 
-    public function getMessageByMessageId(int $messageId): TelegramMessages
+    public function getMessageByMessageId(int $messageId): TelegramMessage
     {
         return $this->query()
             ->where('message_id', $messageId)

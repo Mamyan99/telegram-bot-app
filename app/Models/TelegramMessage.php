@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $date
  */
 
-class TelegramMessages extends Model
+class TelegramMessage extends Model
 {
     use HasFactory;
 

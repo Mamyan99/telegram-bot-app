@@ -14,7 +14,6 @@ class TelegramMessagesController extends Controller
         TelegramMessageRequest $request,
         TelegramMessagesService $service
     ): JsonResponse {
-        TelegramMessageEvent::dispatch();
         $service->answer($request->getMessageId(), $request->getMessage());
 
         return $this->response();

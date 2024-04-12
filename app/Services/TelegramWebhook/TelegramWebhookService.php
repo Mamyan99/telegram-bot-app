@@ -3,7 +3,7 @@
 namespace App\Services\TelegramWebhook;
 
 use App\Http\Dto\TelegramMessageDto\TelegramMessageDto;
-use App\Models\TelegramMessages;
+use App\Models\TelegramMessage;
 use App\Repositories\TelegramMessage\TelegramMessageRepositoryInterface;
 
 class TelegramWebhookService
@@ -14,7 +14,7 @@ class TelegramWebhookService
 
     public function handleWebhook(TelegramMessageDto $dto): void
     {
-        $message = TelegramMessages::create($dto);
+        $message = TelegramMessage::create($dto);
 
         $this->telegramMessageRepository->save($message);
     }

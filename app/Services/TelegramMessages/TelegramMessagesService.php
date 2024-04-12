@@ -4,7 +4,7 @@ namespace App\Services\TelegramMessages;
 
 use App\Http\Dto\TelegramMessageDto\TelegramMessageDto;
 use App\Library\Telegram\TelegramLibrary;
-use App\Models\TelegramMessages;
+use App\Models\TelegramMessage;
 use App\Repositories\TelegramMessage\TelegramMessageRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -49,7 +49,7 @@ class TelegramMessagesService
                 ]
             );
 
-            $message = TelegramMessages::create($dto);
+            $message = TelegramMessage::create($dto);
             $this->telegramMessageRepository->save($message);
         }
     }

@@ -43,6 +43,21 @@ services:
             MYSQL_PASSWORD: rootroot
             MYSQL_USERNAME: root
         hostname: server-mysql
+
+    server-mysql-test:
+        image: mysql:latest
+        container_name: server-mysql-test
+        restart: unless-stopped
+        ports:
+            - "3308:3306"
+        networks:
+            - server-network
+        environment:
+            MYSQL_DATABASE: telegram
+            MYSQL_ROOT_PASSWORD: rootroot
+            MYSQL_PASSWORD: rootroot
+            MYSQL_USERNAME: root
+        hostname: server-mysql
 networks:
     server-network:
         driver: bridge
