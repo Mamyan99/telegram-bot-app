@@ -1,5 +1,5 @@
 # пересобирает контейнеры подготавливает базу для dev разработки
-init: rebuild composer-install migrate
+init: rebuild composer-install key-generate migrate
 
 # пересобирает контейнеры подготавливает базу и запускает все тесты
 test: down rebuild tests-prepare run-tests
@@ -17,6 +17,8 @@ rebuild:
 # команды для инициализации dev среды
 composer-install:
 	docker exec -t  server-php composer install
+key-generate:
+	docker exec -t  server-php php artisan key:generate
 fresh-migrate:
 	docker exec -t  server-php php artisan migrate:fresh
 migrate:

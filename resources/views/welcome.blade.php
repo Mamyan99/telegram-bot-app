@@ -39,6 +39,12 @@
         @endforeach
     </div>
 
+    @if($data->isEmpty())
+        <div class="messages-block">
+            No messages yet
+        </div>
+    @endif
+
     <div class="chat-popup" id="myForm">
         <div class="form-container" >
             <input id="reply-form-message-id" type="hidden" name="message_id" value="">
@@ -95,7 +101,6 @@
             .then(response => response.text())
             .then(data => {
                 let block = document.getElementById('messages-block')
-                block.innerHTML = ''
 
                 const parser = new DOMParser();
                 const parsedHTML = parser.parseFromString(data, 'text/html');
@@ -104,6 +109,10 @@
 
                 let items = fragment.getElementsByClassName('messagesWrapperBlock');
                 let itemsArray = Array.from(items);
+
+                if (itemsArray.length !== 0) {
+                    block.innerHTML = ''
+                }
 
                 itemsArray.forEach(function (item) {
                     block.appendChild(item)
